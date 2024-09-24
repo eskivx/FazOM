@@ -1,10 +1,10 @@
-package rutke.julio.tarefas.entities.dtos;
 
-public class CriarTarefaDTO {
+
+public class CriarEstoqueDTO {
 	
 	private String descricao;
 	private String status;
-	private Long usuario;
+
 	
 	
 	public String getDescricao() {
@@ -19,13 +19,6 @@ public class CriarTarefaDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Long getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Long usuario) {
-		this.usuario = usuario;
-	}
-	
-	
+
 
 }

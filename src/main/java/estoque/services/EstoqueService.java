@@ -24,8 +24,8 @@ public class EstoqueService {
 	public Estoque criarEstoque(CriarEstoqueDTO estoqueDTO) throws Exception {
 		
 		Estoque estoque = new Estoque();
-		estoque.setDescricao(tarefaDTO.getDescricao());
-		estoque.setStatus(tarefaDTO.getStatus());
+		estoque.setDescricao(estoqueDTO.getDescricao());
+		estoque.setStatus(estoqueDTO.getStatus());
 
 
 
