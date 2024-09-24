@@ -1,13 +1,12 @@
-package rutke.julio.tarefas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TarefasApplication {
+public class EstoquesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TarefasApplication.class, args);
+		SpringApplication.run(EstoquesApplication.class, args);
 	}
 
 }
