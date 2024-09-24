@@ -21,49 +21,49 @@ import rutke.julio.tarefas.entities.dtos.CriarTarefaDTO;
 import rutke.julio.tarefas.services.TarefaService;
 
 @RestController
-@RequestMapping("/tarefa")
-public class TarefaController {
+@RequestMapping("/estoque")
+public class EstoqueController {
 	
-	private TarefaService tarefaService;
+	private EstoqueController estoqueController;
 	
-	public TarefaController(TarefaService tarefaService) {
-		this.tarefaService = tarefaService;
+	public EstoqueController(EstoqueController estoqueController) {
+		this.estoqueController = estoqueController;
 	}
 	
 	@GetMapping("/buscar")
-	public ResponseEntity<?> buscarTarefas(){
+	public ResponseEntity<?> buscarEstoque(){
 		try {
-			List<Tarefa> tarefas = tarefaService.listarTarefas();
-			return ResponseEntity.ok(tarefas);
+			List<Tarefa> estoque = estoqueService.listarTarefas();
+			return ResponseEntity.ok(estoque);
 		} catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<?> criarTarefa(@RequestBody CriarTarefaDTO tarefa){
+	public ResponseEntity<?> criarEstoque(@RequestBody CriarEstoqueDTO estoque){
 		try {
-			Tarefa tarefaCriada = tarefaService.criarTarefa(tarefa);
-			return ResponseEntity.ok(tarefa);
+			Tarefa estoqueCriado = estoqueService.criarTarefa(estoque);
+			return ResponseEntity.ok(estoque);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
 	
 	@PutMapping("/alterar")
-	public ResponseEntity<?> atualizarTarefa(@RequestBody Tarefa tarefa){
+	public ResponseEntity<?> atualizarEstoque(@RequestBody Estoque estoque){
 		try {
-			Tarefa tarefaAtualizada = tarefaService.atualizarTarefa(tarefa);
-			return ResponseEntity.ok(tarefa);
+			Tarefa estoqueAtualizado = estoqueService.atualizarTarefa(estoque);
+			return ResponseEntity.ok(estoque);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
 	
 	@PatchMapping("/status/{codigo}")
-	public ResponseEntity<?> atualizarStatusTarefa(@PathVariable Long codigo, @RequestParam("status") String status){
+	public ResponseEntity<?> atualizarStatusEstoque(@PathVariable Long codigo, @RequestParam("status") String status){
 		try {
-			tarefaService.atualizarStatusTarefa(codigo, status);
+			estoqueService.atualizarStatusEstoque(codigo, status);
 			return ResponseEntity.ok("Status alterado com sucesso!");
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
@@ -72,9 +72,9 @@ public class TarefaController {
 	
 
 	@DeleteMapping("/excluir/{codigo}")
-	public ResponseEntity<?> excluirTarefa(@PathVariable Long codigo){
+	public ResponseEntity<?> excluirEstoque(@PathVariable Long codigo){
 		try {
-			tarefaService.excluirTarefa(codigo);
+			estoqueService.excluirEstoque(codigo);
 			return ResponseEntity.ok("Excluída com Sucesso");
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
@@ -82,11 +82,11 @@ public class TarefaController {
 	}
 	
 	@GetMapping("/buscar/{codigo}")
-	public ResponseEntity<?> buscarTarefaPorCodigo(@PathVariable Long codigo){
+	public ResponseEntity<?> buscarEstoquePorCodigo(@PathVariable Long codigo){
 		try {
-			Optional<Tarefa> tarefa = tarefaService.listarTarefaPorCodigo(codigo);
-			if(Optional.ofNullable(tarefa).isPresent())
-				return ResponseEntity.ok(tarefa.get());
+			Optional<Estoque> estoque = estoqueService.listarEstoquePorCodigo(codigo);
+			if(Optional.ofNullable(estoque).isPresent())
+				return ResponseEntity.ok(estoque.get());
 			else
 				return ResponseEntity.notFound().build();
 			
