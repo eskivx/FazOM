@@ -1,4 +1,4 @@
-package rutke.julio.tarefas.controllers;
+package estoque.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import rutke.julio.tarefas.entities.Tarefa;
-import rutke.julio.tarefas.entities.dtos.CriarTarefaDTO;
-import rutke.julio.tarefas.services.TarefaService;
+import estoque.entities.Estoque;
+import estoque.entities.dtos.CriarEstoqueDTO;
+import estoque.services.EstoqueService;
 
 @RestController
 @RequestMapping("/estoque")
@@ -33,7 +33,7 @@ public class EstoqueController {
 	@GetMapping("/buscar")
 	public ResponseEntity<?> buscarEstoque(){
 		try {
-			List<Tarefa> estoque = estoqueService.listarTarefas();
+			List<Estoque> estoque = estoqueService.listarEstoques();
 			return ResponseEntity.ok(estoque);
 		} catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
@@ -43,7 +43,7 @@ public class EstoqueController {
 	@PostMapping("/add")
 	public ResponseEntity<?> criarEstoque(@RequestBody CriarEstoqueDTO estoque){
 		try {
-			Tarefa estoqueCriado = estoqueService.criarTarefa(estoque);
+			Estoque estoqueCriado = estoqueService.criarEstoque(estoque);
 			return ResponseEntity.ok(estoque);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
@@ -53,7 +53,7 @@ public class EstoqueController {
 	@PutMapping("/alterar")
 	public ResponseEntity<?> atualizarEstoque(@RequestBody Estoque estoque){
 		try {
-			Tarefa estoqueAtualizado = estoqueService.atualizarTarefa(estoque);
+			Estoque estoqueAtualizado = estoqueService.atualizarEstoque(estoque);
 			return ResponseEntity.ok(estoque);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));

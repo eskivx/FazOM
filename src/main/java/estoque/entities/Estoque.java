@@ -1,4 +1,4 @@
-package rutke.julio.tarefas.entities;
+package estoque.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

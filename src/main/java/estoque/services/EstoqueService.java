@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import rutke.julio.tarefas.entities.Tarefa;
-import rutke.julio.tarefas.entities.Usuario;
-import rutke.julio.tarefas.entities.dtos.CriarTarefaDTO;
-import rutke.julio.tarefas.repositories.TarefaRepository;
+
+import estoque.entities.Estoque;
+import estoque.entities.dtos.CriarEstoqueDTO;
+import estoque.repositories.EstoqueRepository;
 
 @Service
 public class EstoqueService {
