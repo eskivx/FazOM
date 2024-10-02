@@ -94,6 +94,19 @@ public class EstoqueController {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
-	
+
+	@GetMapping("/buscar/status/{value}")
+	public ResponseEntity<?> buscarEstoquePorStatus(@PathVariable Long value){
+		try {
+			Optional<Estoque> estoque = estoqueService.listarEstoquePorCodigo(value);
+			if(Optional.ofNullable(estoque).isPresent())
+				return ResponseEntity.ok(estoque.get());
+			else
+				return ResponseEntity.notFound().build();
+
+		}catch(Exception ex) {
+			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
+		}
+	}
 
 }
