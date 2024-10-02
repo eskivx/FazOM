@@ -1,4 +1,4 @@
-
+package estoque.entities.dtos;
 
 public class CriarEstoqueDTO {
 	

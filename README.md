@@ -48,3 +48,5 @@ M28
 ⣿⣿⣿⣿⣿⣟⡻⣝⠞⣭⠲⡉⢋⠤⢁⠀⠈⠀⠄⠁⠀⠀⡀⠠⠀ <br>
 
 
+Codigo para realizar a conexão com o banco de dados, e armazenar informações nele, (realizar um crud, e utilizar id também) 
+
