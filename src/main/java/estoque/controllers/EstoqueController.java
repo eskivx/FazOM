@@ -24,10 +24,10 @@ import estoque.services.EstoqueService;
 @RequestMapping("/estoque")
 public class EstoqueController {
 	
-	private EstoqueController estoqueController;
+	private EstoqueService estoqueService;
 	
-	public EstoqueController(EstoqueController estoqueController) {
-		this.estoqueController = estoqueController;
+	public EstoqueController(EstoqueService estoqueService) {
+		this.estoqueService = estoqueService; 
 	}
 	
 	@GetMapping("/buscar")
