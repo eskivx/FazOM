@@ -26,6 +26,7 @@ public class EstoqueController {
 	
 	private EstoqueService estoqueService;
 	
+	
 	public EstoqueController(EstoqueService estoqueService) {
 		this.estoqueService = estoqueService; 
 	}
