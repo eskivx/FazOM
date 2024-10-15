@@ -1,8 +1,8 @@
-package estoque.repositories;
+package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import estoque.entities.Estoque;
+import com.example.demo.entities.Estoque;
 
 public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
 

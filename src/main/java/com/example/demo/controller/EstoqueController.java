@@ -1,8 +1,9 @@
-package estoque.controllers;
+package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.entities.DTO.AlterarUsuarioDTO;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,9 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import estoque.entities.Estoque;
-import estoque.entities.dtos.CriarEstoqueDTO;
-import estoque.services.EstoqueService;
+import com.example.demo.entities.Estoque;
+import com.example.demo.service.EstoqueService;
 
 @RestController
 @RequestMapping("/estoque")
@@ -41,7 +41,7 @@ public class EstoqueController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<?> criarEstoque(@RequestBody CriarEstoqueDTO estoque){
+	public ResponseEntity<?> criarEstoque(@RequestBody AlterarUsuarioDTO.CriarEstoqueDTO estoque){
 		try {
 			Estoque estoqueCriado = estoqueService.criarEstoque(estoque);
 			return ResponseEntity.ok(estoque);

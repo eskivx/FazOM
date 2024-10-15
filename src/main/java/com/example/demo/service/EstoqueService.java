@@ -1,14 +1,14 @@
-package estoque.services;
+package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.entities.DTO.AlterarUsuarioDTO;
 import org.springframework.stereotype.Service;
 
 
-import estoque.entities.Estoque;
-import estoque.entities.dtos.CriarEstoqueDTO;
-import estoque.repositories.EstoqueRepository;
+import com.example.demo.entities.Estoque;
+import com.example.demo.repository.EstoqueRepository;
 
 @Service
 public class EstoqueService {
@@ -21,7 +21,7 @@ public class EstoqueService {
 
 	}
 
-	public Estoque criarEstoque(CriarEstoqueDTO estoqueDTO) throws Exception {
+	public Estoque criarEstoque(AlterarUsuarioDTO.CriarEstoqueDTO estoqueDTO) throws Exception {
 
 		Estoque estoque = new Estoque();
 		estoque.setDescricao(estoqueDTO.getDescricao());
