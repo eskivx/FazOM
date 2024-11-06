@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.entities.DTO.AlterarUsuarioDTO;
+import com.example.demo.entities.DTO.CriarEstoqueDTO;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,7 +43,7 @@ public class EstoqueController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<?> criarEstoque(@RequestBody AlterarUsuarioDTO.CriarEstoqueDTO estoque){
+	public ResponseEntity<?> criarEstoque(@RequestBody CriarEstoqueDTO estoque){
 		try {
 			Estoque estoqueCriado = estoqueService.criarEstoque(estoque);
 			return ResponseEntity.ok(estoque);

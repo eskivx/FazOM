@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.entities.DTO.AlterarUsuarioDTO;
+import com.example.demo.entities.DTO.CriarEstoqueDTO;
 import org.springframework.stereotype.Service;
 
 
@@ -21,7 +22,7 @@ public class EstoqueService {
 
 	}
 
-	public Estoque criarEstoque(AlterarUsuarioDTO.CriarEstoqueDTO estoqueDTO) throws Exception {
+	public Estoque criarEstoque(CriarEstoqueDTO estoqueDTO) throws Exception {
 
 		Estoque estoque = new Estoque();
 		estoque.setDescricao(estoqueDTO.getDescricao());
