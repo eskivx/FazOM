@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entities.DTO.AlterarUsuarioDTO;
+import com.example.demo.entities.DTO.AtualizarSenhaDTO;
 import com.example.demo.entities.Usuario;
 import com.example.demo.repository.UsuarioRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService {
+
     private UsuarioRepository usuarioRepository;
     private PasswordEncoder passwordEncoder;
 
@@ -56,5 +58,29 @@ public class UsuarioService {
 
     public Optional<Usuario> getUsuarioAuth(String username){
         return usuarioRepository.findByEmail(username);
+    }
+
+    public AlterarUsuarioDTO atualizarUsuario(AlterarUsuarioDTO alterarUsuarioDTO) throws Exception {
+        Optional<Usuario> usuario = usuarioRepository.findById(alterarUsuarioDTO.getCodigo());
+
+        if(Optional.ofNullable(usuario).isPresent()) {
+            usuario.get().setEmail(alterarUsuarioDTO.getEmail());
+            usuario.get().setNome(alterarUsuarioDTO.getNome());
+            usuario.get().setPermissao(alterarUsuarioDTO.getPermissao());
+            usuario.get().setTelefone(alterarUsuarioDTO.getTelefone());
+            usuarioRepository.save(usuario.get());
+
+            return alterarUsuarioDTO;
+        }
+
+        throw new Exception("Usuário não existe!");
+    }
+
+    public Usuario atualizarSenhaUsuario(AtualizarSenhaDTO senhaUsuario) {
+        Optional<Usuario> usuario = usuarioRepository.findById(senhaUsuario.getCodigo());
+        String pass = passwordEncoder.encode(senhaUsuario.getSenha());
+        usuario.get().setSenha(pass);
+        usuarioRepository.save(usuario.get());
+        return usuario.get();
     }
 }
