@@ -1,6 +1,6 @@
 package com.example.demo.entities.DTO;
 
-public class CriarEstoqueDTO {
+public class CriarItemDTO {
 
 
         private String descricao;

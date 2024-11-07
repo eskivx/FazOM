@@ -3,8 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.entities.DTO.AlterarUsuarioDTO;
-import com.example.demo.entities.DTO.CriarEstoqueDTO;
+import com.example.demo.entities.DTO.CriarItemDTO;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,91 +17,91 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entities.Estoque;
-import com.example.demo.service.EstoqueService;
+import com.example.demo.entities.Item;
+import com.example.demo.service.ItemService;
 
 @RestController
-@RequestMapping("/estoque")
-public class EstoqueController {
-	
-	private EstoqueService estoqueService;
-	
-	
-	public EstoqueController(EstoqueService estoqueService) {
-		this.estoqueService = estoqueService; 
+@RequestMapping("/item")
+public class ItemController {
+
+	private ItemService itemService;
+
+
+	public ItemController(ItemService itemService) {
+		this.itemService = itemService;
 	}
-	
+
 	@GetMapping("/buscar")
-	public ResponseEntity<?> buscarEstoque(){
+	public ResponseEntity<?> buscarItem(){
 		try {
-			List<Estoque> estoque = estoqueService.listarEstoques();
-			return ResponseEntity.ok(estoque);
+			List<Item> item = itemService.listarItems();
+			return ResponseEntity.ok(item);
 		} catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
-	
+
 	@PostMapping("/add")
-	public ResponseEntity<?> criarEstoque(@RequestBody CriarEstoqueDTO estoque){
+	public ResponseEntity<?> criaritem(@RequestBody CriarItemDTO item){
 		try {
-			Estoque estoqueCriado = estoqueService.criarEstoque(estoque);
-			return ResponseEntity.ok(estoque);
+			Item itemCriado = itemService.criarItem(item);
+			return ResponseEntity.ok(item);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
-	
+
 	@PutMapping("/alterar")
-	public ResponseEntity<?> atualizarEstoque(@RequestBody Estoque estoque){
+	public ResponseEntity<?> atualizaritem(@RequestBody Item item){
 		try {
-			Estoque estoqueAtualizado = estoqueService.atualizarEstoque(estoque);
-			return ResponseEntity.ok(estoque);
+			Item itemAtualizado = itemService.atualizarItem(item);
+			return ResponseEntity.ok(item);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
-	
+
 	@PatchMapping("/status/{codigo}")
-	public ResponseEntity<?> atualizarStatusEstoque(@PathVariable Long codigo, @RequestParam("status") String status){
+	public ResponseEntity<?> atualizarStatusitem(@PathVariable Long codigo, @RequestParam("status") String status){
 		try {
-			estoqueService.atualizarStatusEstoque(codigo, status);
+			itemService.atualizarStatusItem(codigo, status);
 			return ResponseEntity.ok("Status alterado com sucesso!");
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
-	
+
 
 	@DeleteMapping("/excluir/{codigo}")
-	public ResponseEntity<?> excluirEstoque(@PathVariable Long codigo){
+	public ResponseEntity<?> excluiritem(@PathVariable Long codigo){
 		try {
-			estoqueService.excluirEstoque(codigo);
+			itemService.excluirItem(codigo);
 			return ResponseEntity.ok("Excluída com Sucesso");
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
-	
+
 	@GetMapping("/buscar/{codigo}")
-	public ResponseEntity<?> buscarEstoquePorCodigo(@PathVariable Long codigo){
+	public ResponseEntity<?> buscaritemPorCodigo(@PathVariable Long codigo){
 		try {
-			Optional<Estoque> estoque = estoqueService.listarEstoquePorCodigo(codigo);
-			if(Optional.ofNullable(estoque).isPresent())
-				return ResponseEntity.ok(estoque.get());
+			Optional<Item> item = itemService.listarItemPorCodigo(codigo);
+			if(Optional.ofNullable(item).isPresent())
+				return ResponseEntity.ok(item.get());
 			else
 				return ResponseEntity.notFound().build();
-			
+
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
 
 	@GetMapping("/buscar/status/{value}")
-	public ResponseEntity<?> buscarEstoquePorStatus(@PathVariable Long value){
+	public ResponseEntity<?> buscaritemPorStatus(@PathVariable Long value){
 		try {
-			Optional<Estoque> estoque = estoqueService.listarEstoquePorCodigo(value);
-			if(Optional.ofNullable(estoque).isPresent())
-				return ResponseEntity.ok(estoque.get());
+			Optional<Item> item = itemService.listarItemPorCodigo(value);
+			if(Optional.ofNullable(item).isPresent())
+				return ResponseEntity.ok(item.get());
 			else
 				return ResponseEntity.notFound().build();
 
