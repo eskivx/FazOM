@@ -20,6 +20,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizeConfig -> {
                             authorizeConfig.requestMatchers("/usuario/**").permitAll();
+                            authorizeConfig.requestMatchers("/projeto/**").permitAll();
+                            authorizeConfig.requestMatchers("/item/**").permitAll();
                             authorizeConfig.anyRequest().authenticated();
                         }
                 ).httpBasic(Customizer.withDefaults())

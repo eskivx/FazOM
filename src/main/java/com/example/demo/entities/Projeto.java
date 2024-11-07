@@ -15,6 +15,7 @@ private Long id;
 private String nome;
 private String descricao;
 private Date dataInicio;
+
 @OneToMany
 private List<Item> itens ;
 
