@@ -27,17 +27,29 @@ public class ItemService {
 		Item item = new Item();
 		item.setDescricao(itemDTO.getDescricao());
 		item.setStatus(itemDTO.getStatus());
+		item.setLocal(itemDTO.getLocal());
+		item.setQuantidade(itemDTO.getQuantidade());
 
 
 
-		return item;
+
+		return itemRepository.save(item);
 		}
 
 
-	public Item atualizarItem(Item item) {
-		itemRepository.save(item);
-		return item;
+	public Item atualizarItem(Long codigo, Item item) throws Exception {
+		Optional<Item> existingItem = listarItemPorCodigo(codigo);
+		if (existingItem.isEmpty()) {
+			throw new Exception("Item not found with code: " + codigo);
+		}
+		Item updatedItem = existingItem.get();
+		updatedItem.setDescricao(item.getDescricao());
+		updatedItem.setStatus(item.getStatus());
+		updatedItem.setLocal(item.getLocal());
+		updatedItem.setQuantidade(item.getQuantidade());
+		return itemRepository.save(updatedItem);
 	}
+
 
 	public List<Item> listarItems(){
 		return itemRepository.findAll();
