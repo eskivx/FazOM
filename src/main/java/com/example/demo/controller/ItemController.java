@@ -51,15 +51,20 @@ public class ItemController {
 		}
 	}
 
-	@PutMapping("/alterar")
-	public ResponseEntity<?> atualizaritem(@RequestBody Item item){
+	@PutMapping("/alterar/{codigo}")
+	public ResponseEntity<?> atualizarItem(@PathVariable Long codigo, @RequestBody Item item) {
 		try {
-			Item itemAtualizado = itemService.atualizarItem(item);
-			return ResponseEntity.ok(item);
-		}catch(Exception ex) {
+
+			Item itemAtualizado = itemService.atualizarItem(codigo, item);
+
+
+			return ResponseEntity.ok(itemAtualizado);
+		} catch (Exception ex) {
+
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}
+
 
 	@PatchMapping("/status/{codigo}")
 	public ResponseEntity<?> atualizarStatusitem(@PathVariable Long codigo, @RequestParam("status") String status){

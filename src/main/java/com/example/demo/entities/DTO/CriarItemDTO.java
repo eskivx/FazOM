@@ -5,6 +5,8 @@ public class CriarItemDTO {
 
         private String descricao;
         private String status;
+        private String local;
+        private Long quantidade;
 
 
 
@@ -21,6 +23,20 @@ public class CriarItemDTO {
             this.status = status;
         }
 
-
+    public String getLocal() {
+        return local;
     }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public Long getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Long quantidade) {
+        this.quantidade = quantidade;
+    }
+}
 
