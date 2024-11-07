@@ -1,4 +1,9 @@
 # FazOM
+
+Api rest de estoque e usuário, com autenticaçao utilizando spring security, spring jpa, spring 
+
+Criar uma entidade Item
+
 M28
 
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⡿⠿⣿⣿⣿⣿⣿⣿ <br>
