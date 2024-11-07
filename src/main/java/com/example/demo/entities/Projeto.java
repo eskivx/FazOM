@@ -1,16 +1,13 @@
 package com.example.demo.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Projeto {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,9 +15,8 @@ private Long id;
 private String nome;
 private String descricao;
 private Date dataInicio;
-//renomear falta exporta a entidade itens depois de renomear tudo
 @OneToMany
-private List<Itens> itens ;
+private List<Item> itens ;
 
     public Long getId() {
         return id;
@@ -54,11 +50,11 @@ private List<Itens> itens ;
         this.dataInicio = dataInicio;
     }
 
-    public List<Itens> getItens() {
+    public List<Item> getItens() {
         return itens;
     }
 
-    public void setItens(List<Itens> itens) {
+    public void setItens(List<Item> itens) {
         this.itens = itens;
     }
 }
