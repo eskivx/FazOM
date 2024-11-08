@@ -20,7 +20,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizeConfig -> {
                             authorizeConfig.requestMatchers("/usuario/**").permitAll();
+                            authorizeConfig.requestMatchers("/projeto/**").permitAll();
                             authorizeConfig.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll();
+                            authorizeConfig.requestMatchers("/item/**").permitAll();
                             authorizeConfig.anyRequest().authenticated();
                         }
                 ).httpBasic(Customizer.withDefaults())
