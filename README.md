@@ -1,7 +1,8 @@
 
-Api rest de estoque e usuário, com autenticaçao utilizando spring security, spring jpa, spring 
+# API Rest de estoque e usuário com autenticação utilizando *Spring Boot*, *Spring Security*, *Spring Data JPA* e *Swagger*
 
-Criar uma entidade Item
 
-Codigo para realizar a conexão com o banco de dados, e armazenar informações nele, (realizar um crud, e utilizar id também) 
 
+### CRUD de usuário, projeto e item
+
+> Endpoint do Swagger: ```http://localhost:8080/swagger-ui/index.html```

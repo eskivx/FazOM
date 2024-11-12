@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static javax.management.Query.and;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -24,6 +26,7 @@ public class SecurityConfig {
                             authorizeConfig.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll();
                             authorizeConfig.requestMatchers("/item/**").permitAll();
                             authorizeConfig.anyRequest().authenticated();
+
                         }
                 ).httpBasic(Customizer.withDefaults())
                 .build();

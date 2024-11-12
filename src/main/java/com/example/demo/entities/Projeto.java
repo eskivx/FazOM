@@ -11,10 +11,10 @@ public class Projeto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
-private String nome;
-private String descricao;
-private Date dataInicio;
+    private Long id;
+    private String nome;
+    private String descricao;
+    private Date dataInicio;
 
 @OneToMany
 private List<Item> itens ;
