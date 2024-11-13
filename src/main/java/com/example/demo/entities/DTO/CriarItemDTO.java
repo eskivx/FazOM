@@ -11,7 +11,7 @@ public class CriarItemDTO {
         private String status;
         private String local;
         private Long quantidade;
-        private Set<Projeto> projeto;
+        private Projeto projeto;
 
 
 
@@ -44,11 +44,11 @@ public class CriarItemDTO {
         this.quantidade = quantidade;
     }
 
-    public Set<Projeto> getProjeto() {
+    public Projeto getProjeto() {
         return projeto;
     }
 
-    public void setProjeto(Set<Projeto> projeto) {
+    public void setProjeto(Projeto projeto) {
         this.projeto = projeto;
     }
 }

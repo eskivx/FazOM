@@ -14,8 +14,8 @@ public class Item {
 	private Long quantidade;
 	private String status;
 	private String local;
-	@OneToMany
-	private Set<Projeto> projeto;
+	@ManyToOne
+	private Projeto projeto;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -52,11 +52,11 @@ public class Item {
 		this.local = local;
 	}
 
-	public Set<Projeto> getProjeto() {
+	public Projeto getProjeto() {
 		return projeto;
 	}
 
-	public void setProjeto(Set<Projeto> projeto) {
+	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
 	}
 }
