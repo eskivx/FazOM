@@ -16,8 +16,8 @@ public class Projeto {
     private String descricao;
     private Date dataInicio;
 
-@OneToMany
-private List<Item> itens ;
+//@OneToMany
+//private List<Item> itens ;
 
     public Long getId() {
         return id;
@@ -51,11 +51,11 @@ private List<Item> itens ;
         this.dataInicio = dataInicio;
     }
 
-    public List<Item> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<Item> itens) {
-        this.itens = itens;
-    }
+//    public List<Item> getItens() {
+//        return itens;
+//    }
+//
+//    public void setItens(List<Item> itens) {
+//        this.itens = itens;
+//    }
 }

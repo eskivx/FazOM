@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Item {
 	
@@ -12,7 +14,8 @@ public class Item {
 	private Long quantidade;
 	private String status;
 	private String local;
-
+	@OneToMany
+	private Set<Projeto> projeto;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -47,5 +50,13 @@ public class Item {
 
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public Set<Projeto> getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Set<Projeto> projeto) {
+		this.projeto = projeto;
 	}
 }

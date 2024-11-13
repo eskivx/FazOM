@@ -29,7 +29,7 @@ public class ItemService {
 		item.setStatus(itemDTO.getStatus());
 		item.setLocal(itemDTO.getLocal());
 		item.setQuantidade(itemDTO.getQuantidade());
-
+		item.setProjeto(itemDTO.getProjeto());
 
 
 

@@ -1,5 +1,9 @@
 package com.example.demo.entities.DTO;
 
+import com.example.demo.entities.Projeto;
+
+import java.util.Set;
+
 public class CriarItemDTO {
 
 
@@ -7,6 +11,7 @@ public class CriarItemDTO {
         private String status;
         private String local;
         private Long quantidade;
+        private Set<Projeto> projeto;
 
 
 
@@ -37,6 +42,14 @@ public class CriarItemDTO {
 
     public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Set<Projeto> getProjeto() {
+        return projeto;
+    }
+
+    public void setProjeto(Set<Projeto> projeto) {
+        this.projeto = projeto;
     }
 }
 
