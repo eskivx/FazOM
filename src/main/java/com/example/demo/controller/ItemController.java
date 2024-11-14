@@ -119,7 +119,7 @@ public class ItemController {
 		try {
 			Optional<Item> item = itemService.listarItemPorCodigo(value);
 			if(Optional.ofNullable(item).isPresent())
-				return ResponseEntity.ok(item.get());
+				return ResponseEntity.ok(item.get().getStatus());
 			else
 				return ResponseEntity.notFound().build();
 
