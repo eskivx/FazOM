@@ -45,7 +45,7 @@ public class ItemController {
 	public ResponseEntity<?> criaritem(@RequestBody CriarItemDTO item){
 		try {
 			Item itemCriado = itemService.criarItem(item);
-			return ResponseEntity.ok(item);
+			return ResponseEntity.ok(itemCriado);
 		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}

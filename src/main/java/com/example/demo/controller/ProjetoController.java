@@ -30,8 +30,8 @@ public class ProjetoController {
     @PostMapping("/add")
     public ResponseEntity<?> adicionarProjeto(@RequestBody Projeto projeto) {
         try{
-            projetoService.criarProjeto(projeto);
-            return ResponseEntity.ok(projeto);
+           Projeto proj = projetoService.criarProjeto(projeto);
+            return ResponseEntity.ok(proj);
 
         }catch (Exception ex) {
             return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
