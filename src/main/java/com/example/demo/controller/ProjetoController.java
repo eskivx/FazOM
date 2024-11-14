@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entities.DTO.AlterarProjetoDTO;
 import com.example.demo.entities.Projeto;
 import com.example.demo.service.ProjetoService;
 import org.springframework.http.HttpStatusCode;
@@ -41,10 +42,10 @@ public class ProjetoController {
     }
 
     @PutMapping("/alterar")
-    public ResponseEntity<?> alterarProjeto(@RequestBody Projeto projeto) {
+    public ResponseEntity<?> alterarProjeto(@RequestBody AlterarProjetoDTO alterarProjetoDTO) {
         try{
-            projetoService.AtualizarProjeto(projeto);
-            return ResponseEntity.ok(projeto);
+            alterarProjetoDTO = projetoService.atualizarProjeto(alterarProjetoDTO);
+            return ResponseEntity.ok(alterarProjetoDTO);
         } catch (Exception ex) {
             return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
         }

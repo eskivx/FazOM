@@ -1,7 +1,10 @@
 package com.example.demo.service;
 
 
+import com.example.demo.entities.DTO.AlterarProjetoDTO;
+import com.example.demo.entities.DTO.AlterarUsuarioDTO;
 import com.example.demo.entities.Projeto;
+import com.example.demo.entities.Usuario;
 import com.example.demo.repository.ProjetoRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +28,20 @@ public class ProjetoService {
         return projetoRepository.save(proj);
     }
 
-    public Projeto AtualizarProjeto(Projeto projeto) {
-        projetoRepository.save(projeto);
-        return projeto;
+    public AlterarProjetoDTO atualizarProjeto(AlterarProjetoDTO alterarProjetoDTO) throws Exception {
+        Optional<Projeto> projeto = projetoRepository.findById(alterarProjetoDTO.getId());
+
+        if(Optional.ofNullable(projeto).isPresent()) {
+            projeto.get().setNome(alterarProjetoDTO.getNome());
+            projeto.get().setDescricao(alterarProjetoDTO.getDescricao());
+            projeto.get().setDataInicio(alterarProjetoDTO.getDataInicio());
+
+            projetoRepository.save(projeto.get());
+
+            return alterarProjetoDTO;
+        }
+
+        throw new Exception("Projeto não existe!");
     }
 
     public List<Projeto> listarProjetos() {
