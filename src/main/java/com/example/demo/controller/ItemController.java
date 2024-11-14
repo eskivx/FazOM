@@ -3,7 +3,10 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.entities.DTO.AtualizarItemProjetoDTO;
+import com.example.demo.entities.DTO.AtualizarSenhaDTO;
 import com.example.demo.entities.DTO.CriarItemDTO;
+import com.example.demo.entities.Usuario;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -61,6 +64,16 @@ public class ItemController {
 			return ResponseEntity.ok(itemAtualizado);
 		} catch (Exception ex) {
 
+			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
+		}
+	}
+
+	@PatchMapping("/alterar/projeto")
+	public ResponseEntity<?> atualizarProjeto(@RequestBody AtualizarItemProjetoDTO atualizarItemProjetoDTO){
+		try {
+			Item item = itemService.atualizarProjeto(atualizarItemProjetoDTO);
+			return ResponseEntity.ok(item);
+		}catch(Exception ex) {
 			return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
 		}
 	}

@@ -3,8 +3,11 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.entities.DTO.AtualizarItemProjetoDTO;
+import com.example.demo.entities.DTO.AtualizarSenhaDTO;
 import com.example.demo.entities.DTO.CriarItemDTO;
 import com.example.demo.entities.Item;
+import com.example.demo.entities.Usuario;
 import org.springframework.stereotype.Service;
 
 
@@ -70,6 +73,13 @@ public class ItemService {
 			itemRepository.save(item.get());
 		}
 
+	}
+
+	public Item atualizarProjeto(AtualizarItemProjetoDTO itemprojetoDTO) throws Exception {
+		Optional<Item> item = itemRepository.findById(itemprojetoDTO.getCodigo());
+		item.get().setProjeto(itemprojetoDTO.getProjeto());
+		itemRepository.save(item.get());
+		return item.get();
 	}
 
 
