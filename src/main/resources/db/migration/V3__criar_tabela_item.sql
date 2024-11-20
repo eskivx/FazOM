@@ -4,5 +4,7 @@ CREATE TABLE IF NOT EXISTS public.item
     descricao character varying(255) COLLATE pg_catalog."default",
     quantidade BIGINT,
     status character varying(255) COLLATE pg_catalog."default",
-    local character varying(255) COLLATE pg_catalog."default"
+    local character varying(255) COLLATE pg_catalog."default",
+    projeto_id BIGINT,
+    CONSTRAINT fk_projeto FOREIGN KEY (projeto_id) REFERENCES public.projeto(id)
     );
