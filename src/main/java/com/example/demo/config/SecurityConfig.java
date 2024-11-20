@@ -21,10 +21,26 @@ public class SecurityConfig {
                 .csrf(c -> c.disable())
                 .authorizeHttpRequests(
                         authorizeConfig -> {
-                            authorizeConfig.requestMatchers("/usuario/**").permitAll();
-                            authorizeConfig.requestMatchers("/projeto/**").permitAll();
+                            authorizeConfig.requestMatchers("/usuario/add").permitAll();
+                            authorizeConfig.requestMatchers("/usuario/buscar").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/usuario/alterar").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/usuario/alterar/senha").permitAll();
+                            authorizeConfig.requestMatchers("/usuario/excluir/**").hasRole("ADMIN");
+
+                            authorizeConfig.requestMatchers("/projeto/buscar").permitAll();
+                            authorizeConfig.requestMatchers("/projeto/add").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/projeto/alterar").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/projeto/excluir").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/projeto/alterardescricao/**").hasRole("ADMIN");
+
+                            authorizeConfig.requestMatchers("/item/buscar").permitAll();
+                            authorizeConfig.requestMatchers("/item/add").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/item/alterar/**").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/item/excluir").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/item/status/**").hasRole("ADMIN");
+
                             authorizeConfig.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll();
-                            authorizeConfig.requestMatchers("/item/**").permitAll();
+
                             authorizeConfig.anyRequest().authenticated();
 
                         }
