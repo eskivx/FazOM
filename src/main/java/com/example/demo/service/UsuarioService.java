@@ -28,20 +28,6 @@ public class UsuarioService {
         return usuario;
     }
 
-    public AlterarUsuarioDTO alterarUsuario(AlterarUsuarioDTO alterarUsuarioDTO) throws Exception{
-        Optional<Usuario> usuario = usuarioRepository.findById(alterarUsuarioDTO.getCodigo());
-
-        if (Optional.ofNullable(usuario).isPresent()) {
-            usuario.get().setEmail(alterarUsuarioDTO.getEmail());
-            usuario.get().setCpf(alterarUsuarioDTO.getSenha());
-            usuario.get().setNome(alterarUsuarioDTO.getNome());
-            usuario.get().setTelefone(alterarUsuarioDTO.getNome());
-            usuarioRepository.save(usuario.get());
-            return alterarUsuarioDTO;
-        }
-        throw new Exception("Usuario nao existe");
-
-    }
 
     public List<Usuario> listarUsuarios(){
         return usuarioRepository.findAll();
